@@ -1,9 +1,12 @@
+"use client"
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 export const getGithubToken = () => {
-    return localStorage.getItem("github-token");
+    if (typeof localStorage !== 'undefined') {
+        return localStorage.getItem("github-token");
+    }
 }
 
 export const setGithubToken = (token: string) => {
